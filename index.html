@@ -41,14 +41,23 @@
       </div>
 
       <br>
-      <div class="mt-4 specialties-container">
-        <h1>Specialties</h1>
+      <div class="mt-4 about-container">
+        <h1>Skillsets</h1>
         <ul>
           <li>Backend: Django/Django Rest Framework</li>
           <li>Frontend: Vue.JS, Svelte, HTMX + Alpine.JS</li>
           <li>HTML/CSS (Bootstrap, Bulma, Custom)</li>
-          <li>Lean, effective software</li>
+          <li>Unit testing, integration testing, E2E testing</li>
         </ul>
+        <p>
+          <strong>Mission Statement</strong>: Create effective software:
+          <ul>
+            <li>in less time,</li>
+            <li>that works reliably,</li>
+            <li>with fewer dependencies,</li>
+            <li>that will work as well in ten years as it does today.</li>
+          </ul>
+        </p>
       </div>
 
       <br>
@@ -68,7 +77,7 @@
             <a href="https://www.jsonsaver.com/">jsonSaver</a>: 
             <span>
               Create, retrieve, update, and destroy JSON snippets using our web client or REST API.
-              Made using Django and Django Rest Framework.
+              Made using Django and Django Rest Framework. Tested on the backend with Django's test suite, and E2E tested with Testcafe.
               (<a href="https://github.com/arcanemachine/django-jsonsaver/">View on GitHub</a>)
             </span>
           </li>
@@ -76,15 +85,16 @@
             <a href="https://django-menu-maker.nicholasmoen.com/">Menu Maker</a>: 
             <span>
               Create a menu for your restaurant using our web client, and use our REST API to use the data however you like.
-              Made with Django and Django Rest Framework. (<a href="https://github.com/arcanemachine/django-menu-maker/">View on GitHub</a>)
+              Made with Django and Django Rest Framework. Tested on the backend with Django's built-in test suite.
+              (<a href="https://github.com/arcanemachine/django-menu-maker/">View on GitHub</a>)
             </span>
           </li>
-          <li>
+          <!--li>
             <a href="https://bluecollarsafety.com">Blue Collar Safety</a>:
             <span>
               This service makes it easy for a company to manage an employee's required safety certificates (TDG, WHMIS, etc). Made with Django.
             </span>
-          </li>
+          </li-->
         </ul>
 
         <h2 class="projects-django-title">Vue.JS</h2>
@@ -92,7 +102,9 @@
           <li>
             <a href="https://vue-shopping-cart2.surge.sh/">Shopping Cart Demo</a>:
             <span>
-              A combination Django REST backend and Vue frontend app that simulates a store, shopping cart, and checkout. (View on GitHub - <a href="https://github.com/arcanemachine/django-shopping-cart/">Backend</a>, <a href="https://github.com/arcanemachine/vue-shopping-cart/">Frontend</a>)
+              A combination Django REST backend and Vue frontend app that simulates a store, shopping cart, and checkout.
+              Unit tested with Vue Test Utils and E2E tested with Testcafe.
+              (View on GitHub - <a href="https://github.com/arcanemachine/django-shopping-cart/">Backend</a>, <a href="https://github.com/arcanemachine/vue-shopping-cart/">Frontend</a>)
             </span>
           </li>
           <li>
@@ -120,6 +132,7 @@
             <a href="https://django-htmx-alpine.nicholasmoen.com/">Django Alpine.JS + HTMX - Todo List Demo</a>: 
             <span>
               This project is just a basic todo list. However, the combination of Alpine.JS and HTMX shows how you can get the reactivity of a frontend JS framework without sacrificing the benefits of your server-side framework (Session authentication, templating, etc).
+              E2E tested with Cypress.
               (<a href="https://github.com/arcanemachine/django-htmx-alpine/">View on GitHub</a>)
             </span>
           </li>
@@ -131,7 +144,7 @@
           <li>
             <a href="https://dev.to/nicholas_moen/what-i-learned-while-using-django-with-htmx-and-alpine-js-24jg">Django, HTMX and Alpine.JS: A Match Made In Heaven</a>: 
             <span>
-              An summary of HTMX and Alpine.JS, and my experiences combining them together, with Django on the backend.
+              An summary of HTMX and Alpine.JS, and my experiences combining them together, using Django on the backend.
               (<a href="https://github.com/arcanemachine/django-htmx-alpine/">View on GitHub</a>)
             </span>
           </li>
