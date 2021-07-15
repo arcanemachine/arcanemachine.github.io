@@ -1,0 +1,114 @@
+.bg-black {
+  background-color: black;
+}
+
+.text-color-default {
+  color: white;
+}
+
+.text-color-default.uk-light {
+  color: black;
+}
+
+#tagline-cursor {
+  position: absolute;
+  font-size: 1.4rem;
+  margin-top: -0.4rem;
+  transition: opacity 1s;
+}
+
+#footer-space-fix-hack { /* footer is fixed, so overlaps bottom page content */
+  height: 6rem; /* clear the footer plus a little bit extra */
+}
+
+#page-footer {
+  position: fixed;
+  height: 5rem;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  z-index: 5;
+}
+
+#page-footer:not(.is-dark-mode) {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #777 5%, #ddd 10%, white 100%);
+}
+
+#page-footer.is-dark-mode {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #777 5%, #111 10%, black 100%);
+}
+
+.footer-item {
+  transition-property: bottom, background, color, fill;
+  transition-duration: 1s;
+}
+
+#icon-action-container {
+  height: 0;
+  width: 0;
+}
+
+.icon-action {
+  height: 3rem;
+  width: 3rem;
+  position: fixed;
+  bottom: 0.8rem;
+  user-select: none;
+  z-index: 10;
+}
+
+#icon-github {
+  left: 1.5rem;
+}
+
+#icon-github.is-dark-mode {
+  fill: white;
+}
+
+#icon-email {
+  fill: #222;
+  bottom: 0.8rem;
+  left: calc(50vw - (48px / 2));
+  border-radius: 0.25rem;
+}
+
+#icon-email.is-dark-mode {
+  fill: white;
+}
+
+#icon-dark-mode {
+  right: 1.5rem;
+  cursor: pointer;
+}
+
+/* animations */
+@keyframes wiggle-rotate {
+  0% { transform: rotate(0deg); }
+  80% { transform: rotate(0deg); }
+  82.5% { transform: rotate(10deg); }
+  87.5% { transform: rotate(-10deg); }
+  90% { transform: rotate(0deg); }
+  92.5% { transform: rotate(10deg); }
+  97.5% { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes wiggle {
+  0% { transform: translate(0px); }
+  90% { transform: translate(0px); }
+  91% { transform: translate(2px); }
+  92% { transform: translate(-2px); }
+  93% { transform: translate(2px); }
+  94% { transform: translate(-2px); }
+  95% { transform: translate(2px); }
+  96% { transform: translate(-2px); }
+  97% { transform: translate(2.5px); }
+  98% { transform: translate(-2px); }
+  99% { transform: translate(0px); }
+  100% { transform: translate(0px); }
+}
+
+.wiggle {
+  animation: wiggle 5s infinite;
+}

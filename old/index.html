@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <title>Nicholas Moen - Projects</title>
+
+    <style>
+
+/* formatting */
+h1 {
+  margin-bottom: 0;
+}
+
+h2 {
+  margin-top: 0.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+/* UI elements */
+.page-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90vw;
+}
+
+    </style>
+
+
+  </head>
+  <body>
+
+    <div class="page-container">
+
+      <div class="title-container text-center">
+        <h1 id="title-title">Nicholas Moen</h1>
+        <h2 id="title-subheading">Full-Stack Web Developer</h2>
+        <p>arcanemachine AT tutanota DOT com</p>
+      </div>
+
+      <br>
+      <div class="about-container">
+
+        <h2 class="mt-8 text-center">Mission Statement</h2>
+        <p>Create effective software in less time, that will work as well in ten years as it does today.</p>
+
+        <h2 class="mt-8 text-center">Skillsets</h2>
+        <ul>
+          <li>Backend: Django/Django Rest Framework</li>
+          <li>Frontend: Vanilla JS, Vue.JS, Svelte, HTMX + Alpine.JS</li>
+          <li>HTML/CSS (Bootstrap, Bulma, Custom)</li>
+          <li>Unit testing, integration testing, E2E testing</li>
+        </ul>
+      </div>
+
+      <div class="projects-container">
+        <h2 class="mt-8 text-center projects-title">Noteworthy Projects</h2>
+
+        <h3>Alpine.JS + HTMX</h3>
+        <ul>
+          <li>
+            <a href="https://django-htmx-alpine.nicholasmoen.com/">Alpine.JS + HTMX - Todo List Demo</a>: 
+            <span>
+              This project is essentially just a basic todo list. However, the combination of Alpine.JS and HTMX shows how you can get the reactivity of a frontend JS framework without sacrificing the benefits of your server-side framework (Session authentication, templating, etc).
+              Uses Django on the backend.
+              E2E tested with Cypress.
+              (<a href="https://github.com/arcanemachine/django-htmx-alpine/">View on GitHub</a>)
+            </span>
+          </li>
+        </ul>
+
+        <h3>Browser Extensions</h3>
+        <ul>
+          <li>
+            <a href="https://github.com/arcanemachine/omni-qr-chrome">OmniQR Code Viewer</a>: 
+            <span>
+              A minimalist, privacy-friendly Chrome extension that always displays a QR code in the corner of your browser window. Perfect for streamers who want to share URLs while using a web browser!
+              (<a href="https://github.com/arcanemachine/omni-qr-chrome">View on GitHub</a>)
+            </span>
+          </li>
+        </ul>
+
+        <h3>Django</h3>
+        <ul>
+          <li>
+            <a href="https://www.makenget.com/">makeNget</a>: 
+            <span>
+              Create, remix, and share 2D and 3D CAD models using a variety of open-source CAD web apps.
+              Made using Django.
+            </span>
+          </li>
+          <li>
+            <a href="https://www.jsonsaver.com/">jsonSaver</a>: 
+            <span>
+              Create, retrieve, update, and destroy JSON snippets using our web client or REST API.
+              Made using Django and Django Rest Framework. Tested on the backend with Django's test suite, and E2E tested with Testcafe.
+              (<a href="https://github.com/arcanemachine/django-jsonsaver/">View on GitHub</a>)
+            </span>
+          </li>
+          <li>
+            <a href="https://django-menu-maker.nicholasmoen.com/">Menu Maker</a>: 
+            <span>
+              Create a menu for your restaurant using our web client, and use our REST API to use the data however you like.
+              Made with Django and Django Rest Framework. Tested on the backend with Django's built-in test suite.
+              (<a href="https://github.com/arcanemachine/django-menu-maker/">View on GitHub</a>)
+            </span>
+          </li>
+          <!--li>
+            <a href="https://bluecollarsafety.com">Blue Collar Safety</a>:
+            <span>
+              This service makes it easy for a company to manage an employee's required safety certificates (TDG, WHMIS, etc). Made with Django.
+            </span>
+          </li-->
+        </ul>
+
+        <h3>React</h3>
+        <ul>
+          <li>
+            <a href="https://another-react-todo-list.surge.sh/">React Todo List</a>: 
+            <span>
+              A basic todo list made using React.
+              (<a href="https://github.com/arcanemachine/react-todo/">View on GitHub</a>)
+            </span>
+          </li>
+          <li>
+            <a href="https://react-weather.surge.sh/">React Weather</a>: 
+            <span>
+              A weather app made using React.
+              (<a href="https://github.com/arcanemachine/react-weather/">View on GitHub</a>)
+            </span>
+          </li>
+        </ul>
+
+
+        <h3>Svelte</h3>
+        <ul>
+          <li>
+            <a href="https://reddit-micro.surge.sh/">Reddit Micro</a>: 
+            <span>
+              This privacy-friendly, minimalistic client parses Reddit's JSON data to create a basic, but usable, web app. Supports dark mode!
+              (<a href="https://github.com/arcanemachine/svelte-reddit/">View on GitHub</a>)
+            </span>
+          </li>
+        </ul>
+
+        <h3>Vue.JS</h3>
+        <ul>
+          <li>
+            <a href="https://vue-shopping-cart2.surge.sh/">Shopping Cart Demo</a>:
+            <span>
+              A combination Django REST backend and Vue frontend app that simulates a store, shopping cart, and checkout.
+              Unit tested with Vue Test Utils and E2E tested with Testcafe.
+              (View on GitHub - <a href="https://github.com/arcanemachine/django-shopping-cart/">Backend</a>, <a href="https://github.com/arcanemachine/vue-shopping-cart/">Frontend</a>)
+            </span>
+          </li>
+          <li>
+            <a href="https://django-chat.nicholasmoen.com/">Django/Vue Chat</a>:
+            <span>
+              A simple chat app that uses a combination of Vue and Django. (<a href="https://github.com/arcanemachine/django-chat/">View on GitHub</a>)
+            </span>
+          </li>
+        </ul>
+
+        <h2 class="mt-8 text-center projects-title">Writeups</h2>
+
+        <ul>
+          <li>
+            <a href="https://dev.to/nicholas_moen/what-i-learned-while-using-django-with-htmx-and-alpine-js-24jg">Django, HTMX and Alpine.JS: A Match Made In Heaven</a>: 
+            <span>
+              An summary of HTMX and Alpine.JS, and my experiences combining them together, using Django on the backend.
+              (<a href="https://github.com/arcanemachine/django-htmx-alpine/">View on GitHub</a>)
+            </span>
+          </li>
+        </ul>
+
+      </div>
+
+      <p class="mt-8 text-center">Check out <a href="https://github.com/arcanemachine/">my other projects on GitHub</a>.</p>
+
+    </div>
+
+   
+	</body>
+</html>

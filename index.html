@@ -3,198 +3,291 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="favicon.ico">
-    <title>Nicholas Moen - Projects</title>
+    <title>Nicholas Moen - Developer Portfolio</title>
 
-    <style>
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.7.0/dist/css/uikit.min.css"/>
 
-/* formatting */
-h1 {
-  margin-bottom: 0;
-}
+    <!-- UIkit JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/uikit@3.7.0/dist/js/uikit.min.js">
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/uikit@3.7.0/dist/js/uikit-icons.min.js"
+    ></script>
 
-h2 {
-  margin-top: 0.5rem;
-}
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.2.1/dist/cdn.min.js"
+            defer></script>
 
-.text-center {
-  text-align: center;
-}
-
-.mt-4 {
-  margin-top: 1rem;
-}
-
-.mt-6 {
-  margin-top: 1.5rem;
-}
-
-.mt-8 {
-  margin-top: 2rem;
-}
-
-/* UI elements */
-.page-container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 90vw;
-}
-
-    </style>
-
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="styles.css">
 
   </head>
-  <body>
+  <body class="uk-light" x-data="mainComponent()">
 
-    <div class="page-container">
+  <div id="page-footer" class="footer-item"></div>
+  <div id="icon-action-container">
+    <a href="https://github.com/arcanemachine/"
+       target="_blank">
+      <svg id="icon-github"
+           class="footer-item icon-action"
+           :class="{ 'is-dark-mode': isDarkMode }"
+           xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 1024 1024"
+           alt="GitHub Logo"
+           title="Check out my GitHub profile!">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" transform="scale(64)"/>
+      </svg>
+    </a>
+    <a :href="emailAddressGenerate">
+      <svg id="icon-email"
+           x-ref="actionIconEmail"
+           class="footer-item icon-action wiggle"
+           :class="{ 'is-dark-mode': isDarkMode }"
+           tabindex="0"
+           xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 16 16"
+           alt="Email me"
+           title="Send me an email">
+        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+      </svg>
+    </a>
+    <a>
+      <svg id="icon-dark-mode"
+           x-ref="darkModeIcon"
+           class="footer-item icon-action"
+           xmlns="http://www.w3.org/2000/svg"
+           :fill="isDarkMode ? 'white' : '#111'"
+           viewBox="0 0 16 16"
+           x-model="isDarkMode"
+           alt="Toggle dark mode"
+           title="Toggle dark mode"
+           @click="themeToggle()"
+           @keydown.enter="themeToggle()">
+         <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+         <path fill="yellow"
+               x-show="!isDarkMode"
+               d="M 5.5550348,11.330662 C 5.0526544,10.15916 5.0214855,10.10539 4.5676948,9.6273776 4.0789744,9.1125712 3.8276536,8.7773618 3.5882067,8.3209456 3.1992556,7.5795549 3.0154357,6.829924 3.0171554,5.9921569 3.0187857,5.1979675 3.1736736,4.5322485 3.5232346,3.8169935 4.0213746,2.7977231 4.7803278,2.0362214 5.803794,1.5287761 6.3101055,1.2777414 6.839132,1.1200285 7.4352941,1.0423945 c 0.2493501,-0.032471 0.9150061,-0.031935 1.1503268,9.271e-4 0.8291874,0.1157932 1.5195211,0.3719706 2.1751631,0.8071859 0.753598,0.5002382 1.305328,1.1326214 1.715682,1.966486 0.349776,0.7107658 0.507828,1.3907802 0.507992,2.1856209 1.68e-4,0.82827 -0.185113,1.5795992 -0.570885,2.3149419 -0.242971,0.4631423 -0.499908,0.8068881 -0.975123,1.3045781 -0.290308,0.3040368 -0.472112,0.5461446 -0.588043,0.7830946 -0.03377,0.06902 -0.201589,0.452549 -0.372933,0.852287 l -0.311534,0.726798 -2.165323,-5.7e-5 -2.1653229,-5.8e-5 z"/>
+      </svg>
+    </a>
+  &nbsp; <!-- Prevents Safari from selecting title when long-pressing icons -->
+  </div>
 
-      <div class="title-container text-center">
-        <h1 id="title-title">Nicholas Moen</h1>
-        <h2 id="title-subheading">Full-Stack Web Developer</h2>
-        <p>arcanemachine AT tutanota DOT com</p>
+  <div class="w-40rem uk-margin-top uk-margin-xlarge-bottom uk-container uk-position-top-center">
+    <div>
+      <h1 id="page-title"
+          class="uk-margin-remove-bottom uk-heading-medium uk-text-center"
+          x-ref="pageTitle">
+        Nicholas Moen
+      </h1>
+
+      <div class="mt-1 uk-margin-auto uk-text-center"
+           x-ref="tagline">
+        <span class="text-color-muted" x-text="taglineText"></span>
+        <span id="tagline-cursor"
+              x-ref="taglineCursor"
+              x-show="taglineCursorShow"
+              x-transition.opacity>&#124;</span>
       </div>
 
-      <br>
-      <div class="about-container">
+      <template x-if="categoriesShow">
+        <div class="uk-margin-medium-top uk-margin-medium-bottom"
+             x-ref="categories">
+          <ul class="uk-flex-center"
+              uk-tab
+              uk-scrollspy="target: > li; cls: uk-animation-slide-top; delay: 100">
+            <li>
+              <a tabindex="0"
+                 @click="categorySelect('about')"
+                 @keydown.enter="categorySelect('about')">
+                About Me
+              </a>
+            </li>
+            <li>
+              <a tabindex="0"
+                 @click="categorySelect('skillsets')"
+                 @keydown.enter="categorySelect('skillsets')">
+                Skillsets
+              </a>
+            </li>
+            <li>
+              <a tabindex="0"
+                 @click="categorySelect('projects')"
+                 @keydown.enter="categorySelect('projects')">
+                Projects
+              </a>
+            </li>
+          </ul>
+        </div>
+      </template>
 
-        <h2 class="mt-8 text-center">Mission Statement</h2>
-        <p>Create effective software in less time, that will work as well in ten years as it does today.</p>
+      <div class="uk-width-1-1">
+        <div x-show="categoryCurrent === 'about'"
+             x-transition.opacity.duration.400ms>
+          <div class="text-center">
+            <p>I am a fullstack web developer.</p>
+            <p>My goal is to make the world's information more accessible.</p>
+            <p>I want to remove the haystack, and help you find the needle.</p>
+          </div>
+        </div>
 
-        <h2 class="mt-8 text-center">Skillsets</h2>
-        <ul>
-          <li>Backend: Django/Django Rest Framework</li>
-          <li>Frontend: Vanilla JS, Vue.JS, Svelte, HTMX + Alpine.JS</li>
-          <li>HTML/CSS (Bootstrap, Bulma, Custom)</li>
-          <li>Unit testing, integration testing, E2E testing</li>
-        </ul>
+        <div x-show="categoryCurrent === 'skillsets'"
+             x-transition.opacity.duration.400ms>
+          <div class="text-center">
+            <p>Backend: Django/Django Rest Framework, HTMX</p>
+            <p>Frontend: Vanilla JS, React, Vue, Svelte, Alpine.JS</p>
+            <p>CSS: Vanilla, Bootstrap, Bulma, and UIKit.</p>
+            <p>Familiar with Linux server environments</p>
+            <p>Unit testing: Jest, Jasmine, Django's TestCase</p>
+            <p>E2E testing: Cypress, Testcafe</p>
+          </div>
+        </div>
+
+        <div x-show="categoryCurrent === 'projects'"
+             x-transition.opacity.duration.400ms>
+            <h2 class="uk-text-center">Stacks</h2>
+
+            <section>
+              <h3>Django</h3>
+              <ul>
+                <li>
+                  <a href="https://www.makenget.com/">makeNget</a>: 
+                  <span>
+                    Create, remix, and share 2D and 3D CAD models using a variety of open-source CAD web apps.
+                    Made using Django.
+                  </span>
+                </li>
+                <li>
+                  <a href="https://www.jsonsaver.com/">jsonSaver</a>: 
+                  <span>
+                    Create, retrieve, update, and destroy JSON snippets using our web client or REST API.
+                    Made using Django and Django Rest Framework. Tested on the backend with Django's test suite, and E2E tested with Testcafe.
+                    (<a href="https://github.com/arcanemachine/django-jsonsaver/">View on GitHub</a>)
+                  </span>
+                </li>
+                <li>
+                  <a href="https://django-menu-maker.nicholasmoen.com/">Menu Maker</a>: 
+                  <span>
+                    Create a menu for your restaurant using our web client, and use our REST API to use the data however you like.
+                    Made with Django and Django Rest Framework. Tested on the backend with Django's built-in test suite.
+                    (<a href="https://github.com/arcanemachine/django-menu-maker/">View on GitHub</a>)
+                  </span>
+                </li>
+                <!--li>
+                  <a href="https://bluecollarsafety.com">Blue Collar Safety</a>:
+                  <span>
+                    This service makes it easy for a company to manage an employee's required safety certificates (TDG, WHMIS, etc). Made with Django.
+                  </span>
+                </li-->
+              </ul>
+            </section>
+
+            <section>
+              <h3>Alpine.JS + HTMX</h3>
+              <ul>
+                <li>
+                  <a href="https://django-htmx-alpine.nicholasmoen.com/">Alpine.JS + HTMX - Todo List Demo</a>: 
+                  <span>
+                    This project is essentially just a basic todo list. However, the combination of Alpine.JS and HTMX shows how you can get the reactivity of a frontend JS framework without sacrificing the benefits of your server-side framework (Session authentication, templating, etc).
+                    (<a href="https://github.com/arcanemachine/django-htmx-alpine/">View on GitHub</a>)
+                  </span>
+                  <div class="my-2">Other features:</div>
+                  <ul>
+                    <li>Unit tested with Jest.</li>
+                    <li>E2E tested with Cypress.</li>
+                    <li>Implements proper a11y practices.</li>
+                    <li>Uses Django on the backend.</li>
+                  </ul>
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h3>Svelte</h3>
+              <ul>
+                <li>
+                  <a href="https://reddit-micro.surge.sh/">Reddit Micro</a>: 
+                  <span>
+                    This privacy-friendly, minimalistic client parses Reddit's JSON data to create a basic, but usable, web app. Supports dark mode!
+                    (<a href="https://github.com/arcanemachine/svelte-reddit/">View on GitHub</a>)
+                  </span>
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h3>Vue.JS</h3>
+              <ul>
+                <li>
+                  <a href="https://vue-shopping-cart2.surge.sh/">Shopping Cart Demo</a>:
+                  <span>
+                    A combination Django REST backend and Vue frontend app that simulates a store, shopping cart, and checkout.
+                    Unit tested with Vue Test Utils and E2E tested with Testcafe.
+                    (View on GitHub - <a href="https://github.com/arcanemachine/django-shopping-cart/">Backend</a>,
+                                      <a href="https://github.com/arcanemachine/vue-shopping-cart/">Frontend</a>)
+                  </span>
+                </li>
+                <li>
+                  <a href="https://django-chat.nicholasmoen.com/">Django/Vue Chat</a>:
+                  <span>
+                    A simple chat app that uses a combination of Vue and Django. (<a href="https://github.com/arcanemachine/django-chat/">View on GitHub</a>)
+                  </span>
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h3>React</h3>
+              <ul>
+                <li>
+                  <a href="https://another-react-todo-list.surge.sh/">React Todo List</a>: 
+                  <span>
+                    A basic todo list made using React.
+                    (<a href="https://github.com/arcanemachine/react-todo/">View on GitHub</a>)
+                  </span>
+                </li>
+              </ul>
+            </section>
+
+            <h2 class="uk-text-center">Other Stuff</h2>
+            <section>
+              <h3>Browser Extensions</h3>
+              <ul>
+                <li>
+                  <a href="https://github.com/arcanemachine/omni-qr-chrome">OmniQR Code Viewer</a>: 
+                  <span>
+                    A minimalist, privacy-friendly Chrome extension that always displays a QR code in the corner of your browser window. Perfect for streamers who use a web browser while streaming!
+                    (<a href="https://github.com/arcanemachine/omni-qr-chrome">View on GitHub</a>)
+                  </span>
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h3>Writeups</h2>
+              <ul>
+                <li>
+                  <a href="https://dev.to/nicholas_moen/what-i-learned-while-using-django-with-htmx-and-alpine-js-24jg">Django, HTMX and Alpine.JS: A Match Made In Heaven</a>:
+                  <span>
+                    A summary of HTMX and Alpine.JS, and my experiences combining them together, using Django on the backend.
+                  </span>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
       </div>
-
-      <div class="projects-container">
-        <h2 class="mt-8 text-center projects-title">Noteworthy Projects</h2>
-
-        <h3>Alpine.JS + HTMX</h3>
-        <ul>
-          <li>
-            <a href="https://django-htmx-alpine.nicholasmoen.com/">Alpine.JS + HTMX - Todo List Demo</a>: 
-            <span>
-              This project is essentially just a basic todo list. However, the combination of Alpine.JS and HTMX shows how you can get the reactivity of a frontend JS framework without sacrificing the benefits of your server-side framework (Session authentication, templating, etc).
-              Uses Django on the backend.
-              E2E tested with Cypress.
-              (<a href="https://github.com/arcanemachine/django-htmx-alpine/">View on GitHub</a>)
-            </span>
-          </li>
-        </ul>
-
-        <h3>Browser Extensions</h3>
-        <ul>
-          <li>
-            <a href="https://github.com/arcanemachine/omni-qr-chrome">OmniQR Code Viewer</a>: 
-            <span>
-              A minimalist, privacy-friendly Chrome extension that always displays a QR code in the corner of your browser window. Perfect for streamers who want to share URLs while using a web browser!
-              (<a href="https://github.com/arcanemachine/omni-qr-chrome">View on GitHub</a>)
-            </span>
-          </li>
-        </ul>
-
-        <h3>Django</h3>
-        <ul>
-          <li>
-            <a href="https://www.makenget.com/">makeNget</a>: 
-            <span>
-              Create, remix, and share 2D and 3D CAD models using a variety of open-source CAD web apps.
-              Made using Django.
-            </span>
-          </li>
-          <li>
-            <a href="https://www.jsonsaver.com/">jsonSaver</a>: 
-            <span>
-              Create, retrieve, update, and destroy JSON snippets using our web client or REST API.
-              Made using Django and Django Rest Framework. Tested on the backend with Django's test suite, and E2E tested with Testcafe.
-              (<a href="https://github.com/arcanemachine/django-jsonsaver/">View on GitHub</a>)
-            </span>
-          </li>
-          <li>
-            <a href="https://django-menu-maker.nicholasmoen.com/">Menu Maker</a>: 
-            <span>
-              Create a menu for your restaurant using our web client, and use our REST API to use the data however you like.
-              Made with Django and Django Rest Framework. Tested on the backend with Django's built-in test suite.
-              (<a href="https://github.com/arcanemachine/django-menu-maker/">View on GitHub</a>)
-            </span>
-          </li>
-          <!--li>
-            <a href="https://bluecollarsafety.com">Blue Collar Safety</a>:
-            <span>
-              This service makes it easy for a company to manage an employee's required safety certificates (TDG, WHMIS, etc). Made with Django.
-            </span>
-          </li-->
-        </ul>
-
-        <h3>React</h3>
-        <ul>
-          <li>
-            <a href="https://another-react-todo-list.surge.sh/">React Todo List</a>: 
-            <span>
-              A basic todo list made using React.
-              (<a href="https://github.com/arcanemachine/react-todo/">View on GitHub</a>)
-            </span>
-          </li>
-          <li>
-            <a href="https://react-weather.surge.sh/">React Weather</a>: 
-            <span>
-              A weather app made using React.
-              (<a href="https://github.com/arcanemachine/react-weather/">View on GitHub</a>)
-            </span>
-          </li>
-        </ul>
-
-
-        <h3>Svelte</h3>
-        <ul>
-          <li>
-            <a href="https://reddit-micro.surge.sh/">Reddit Micro</a>: 
-            <span>
-              This privacy-friendly, minimalistic client parses Reddit's JSON data to create a basic, but usable, web app. Supports dark mode!
-              (<a href="https://github.com/arcanemachine/svelte-reddit/">View on GitHub</a>)
-            </span>
-          </li>
-        </ul>
-
-        <h3>Vue.JS</h3>
-        <ul>
-          <li>
-            <a href="https://vue-shopping-cart2.surge.sh/">Shopping Cart Demo</a>:
-            <span>
-              A combination Django REST backend and Vue frontend app that simulates a store, shopping cart, and checkout.
-              Unit tested with Vue Test Utils and E2E tested with Testcafe.
-              (View on GitHub - <a href="https://github.com/arcanemachine/django-shopping-cart/">Backend</a>, <a href="https://github.com/arcanemachine/vue-shopping-cart/">Frontend</a>)
-            </span>
-          </li>
-          <li>
-            <a href="https://django-chat.nicholasmoen.com/">Django/Vue Chat</a>:
-            <span>
-              A simple chat app that uses a combination of Vue and Django. (<a href="https://github.com/arcanemachine/django-chat/">View on GitHub</a>)
-            </span>
-          </li>
-        </ul>
-
-        <h2 class="mt-8 text-center projects-title">Writeups</h2>
-
-        <ul>
-          <li>
-            <a href="https://dev.to/nicholas_moen/what-i-learned-while-using-django-with-htmx-and-alpine-js-24jg">Django, HTMX and Alpine.JS: A Match Made In Heaven</a>: 
-            <span>
-              An summary of HTMX and Alpine.JS, and my experiences combining them together, using Django on the backend.
-              (<a href="https://github.com/arcanemachine/django-htmx-alpine/">View on GitHub</a>)
-            </span>
-          </li>
-        </ul>
-
-      </div>
-
-      <p class="mt-8 text-center">Check out <a href="https://github.com/arcanemachine/">my other projects on GitHub</a>.</p>
-
+      <div id="footer-space-fix-hack">&nbsp;</div>
     </div>
+  </div>
 
-   
+  <script type="text/javascript" src="scripts.js"></script>
+
+  <script src="https://unpkg.com/htmx.org@1.5.0"
+          integrity="sha384-oGA+prIp5Vchu6we2YkI51UtVzN9Jpx2Z7PnR1I78PnZlN8LkrCT4lqqqmDkyrvI"
+          crossorigin="anonymous"></script>
+
 	</body>
 </html>
