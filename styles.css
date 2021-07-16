@@ -32,11 +32,11 @@
 }
 
 #page-footer:not(.is-dark-mode) {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #777 5%, #ddd 10%, white 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #777 5%, #eee 10%, white 100%);
 }
 
 #page-footer.is-dark-mode {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #777 5%, #222 10%, black 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #777 5%, #111 10%, black 100%);
 }
 
 .footer-item {

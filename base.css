@@ -6,12 +6,14 @@ body {
   display: none !important; /* alpine.js compatibility */
 }
 
+/*
 #page-container {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
   justify-content: space-between;
 }
+*/
 
 /* BULMA EXTENSIONS */
 html {
