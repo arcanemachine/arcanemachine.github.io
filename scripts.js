@@ -59,10 +59,10 @@ function mainComponent() {
       }, 500);
     },
 
-    emailAddressGenerate() {
-      let username = 'arcane' + 'machine';
-      let domainName = 'tutanota' + '.com';
-      return `mailto:${username}@${domainName}`;
+    addyGenerate() {
+      let username = 'arc' + 'ane' + 'mac' + 'hine';
+      let domain = 'tu' + 'ta' + 'no' + 'ta' + '.' + 'c' + 'o' + 'm';
+      return 'ma' + 'il' + `to:${username}@${domain}`;
     },
 
     introAnimationPlay() {
