@@ -12,7 +12,7 @@ function mainComponent() {
     categoryCurrent: undefined,
     isDarkMode: undefined,
     transitionDuration: 1000,
-    taglineText: 'Bringing the web to life.',
+    taglineText: 'Bringing life to the web',
     taglineCursorShow: false,
     taglineCursorBlinkDuration: 400,
 
@@ -133,7 +133,7 @@ function mainComponent() {
           .then(() => delay(1500))
           .then(() => { this.writingEffectAdd("Bringing the web", "Bringing the web to life."); })
         */
-        .then(() => { this.writingEffectAdd("", "Bringing Life to the Web."); })
+        .then(() => { this.writingEffectAdd("", "Bringing life to the web"); })
         .then(() => delay(3500))
         .then(() => { darkModeIcon.classList.remove('opacity-0'); })
         .then(() => delay(1500))
