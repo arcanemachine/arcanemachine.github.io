@@ -133,7 +133,7 @@ function mainComponent() {
           .then(() => delay(1500))
           .then(() => { this.writingEffectAdd("Bringing the web", "Bringing the web to life."); })
         */
-        .then(() => { this.writingEffectAdd("", "Bringing the web to life."); })
+        .then(() => { this.writingEffectAdd("", "Bringing Life to the Web."); })
         .then(() => delay(3500))
         .then(() => { darkModeIcon.classList.remove('opacity-0'); })
         .then(() => delay(1500))
