@@ -1,9 +1,9 @@
 /* eslint no-unused-vars: 0 */
 
 function delay(t) {
-	return new Promise(function (resolve) {
-		setTimeout(resolve, t);
-	});
+  return new Promise(function (resolve) {
+    setTimeout(resolve, t);
+  });
 }
 
 function mainComponent() {
@@ -12,7 +12,7 @@ function mainComponent() {
     categoryCurrent: undefined,
     isDarkMode: undefined,
     transitionDuration: 1000,
-    taglineText: 'Bringing life to the web',
+    taglineText: "Bringing the Web to Life",
     taglineCursorShow: false,
     taglineCursorBlinkDuration: 400,
 
@@ -20,29 +20,28 @@ function mainComponent() {
       // localStorage.clear(); // always play intro animation
 
       // apply the proper theme
-      if (!localStorage.getItem('introSeen')) {
+      if (!localStorage.getItem("introSeen")) {
         this.isDarkMode = true;
       } else {
-        this.isDarkMode = localStorage.getItem('isDarkMode') ? true : false;
+        this.isDarkMode = localStorage.getItem("isDarkMode") ? true : false;
       }
 
       this.$nextTick(() => {
         let htmlEl = document.documentElement;
-        htmlEl.style.transitionProperty = 'background-color, color';
-        htmlEl.style.transitionDuration = '300ms';
+        htmlEl.style.transitionProperty = "background-color, color";
+        htmlEl.style.transitionDuration = "300ms";
       });
       this.themeApply();
 
       // show intro animation to first-time visitors
-      if (!localStorage.getItem('introSeen')) {
+      if (!localStorage.getItem("introSeen")) {
         this.introAnimationPlay();
       } else {
         this.categoriesShow = true;
         setTimeout(() => {
-          this.categorySelect('about');
+          this.categorySelect("about");
         }, 750);
       }
-
     },
 
     categorySelect(categoryName) {
@@ -60,9 +59,9 @@ function mainComponent() {
     },
 
     addyGenerate() {
-      let username = 'arc' + 'ane' + 'mac' + 'hine';
-      let domain = 'tu' + 'ta' + 'no' + 'ta' + '.' + 'c' + 'o' + 'm';
-      return 'ma' + 'il' + `to:${username}@${domain}`;
+      let username = "arc" + "ane" + "mac" + "hine";
+      let domain = "tu" + "ta" + "no" + "ta" + "." + "c" + "o" + "m";
+      return "ma" + "il" + `to:${username}@${domain}`;
     },
 
     introAnimationPlay() {
@@ -72,43 +71,43 @@ function mainComponent() {
       let categories = this.$refs.categories;
 
       // set initial styles
-        // title and subheading
+      // title and subheading
       let pageTitleStyle = getComputedStyle(pageTitle);
-      let pageTitleMarginTop = pageTitleStyle['marginTop'];
-      let pageTitleHeight = pageTitleStyle['height'];
-      pageTitle.style.marginTop =
-        `calc(50vh - ${pageTitleMarginTop} - ${pageTitleHeight} - 5rem)`;
-      pageTitle.classList.add('opacity-0');
+      let pageTitleMarginTop = pageTitleStyle["marginTop"];
+      let pageTitleHeight = pageTitleStyle["height"];
+      pageTitle.style.marginTop = `calc(50vh - ${pageTitleMarginTop} - ${pageTitleHeight} - 5rem)`;
+      pageTitle.classList.add("opacity-0");
 
-        // tagline
-      tagline.classList.add('opacity-0');
+      // tagline
+      tagline.classList.add("opacity-0");
 
-        // footer
-      document.querySelectorAll('.footer-item:not(#icon-dark-mode)')
-        .forEach((item) => { // hide the footer
-          item.style.opacity = '0';  
-          item.style.bottom = '-5rem';
-        })
+      // footer
+      document
+        .querySelectorAll(".footer-item:not(#icon-dark-mode)")
+        .forEach((item) => {
+          // hide the footer
+          item.style.opacity = "0";
+          item.style.bottom = "-5rem";
+        });
 
-        // action icon - email
-      this.$refs.actionIconEmail.classList.remove('wiggle');
+      // action icon - email
+      this.$refs.actionIconEmail.classList.remove("wiggle");
 
-        // action icon - dark mode
+      // action icon - dark mode
       let darkModeIconStyle = getComputedStyle(darkModeIcon);
-      let darkModeIconHeight = darkModeIconStyle['height'];
-      let darkModeIconWidth = darkModeIconStyle['width'];
-      darkModeIcon.classList.add('opacity-0');
+      let darkModeIconHeight = darkModeIconStyle["height"];
+      let darkModeIconWidth = darkModeIconStyle["width"];
+      darkModeIcon.classList.add("opacity-0");
       darkModeIcon.style.right = `calc(50vw - (${darkModeIconHeight} / 2))`;
-      darkModeIcon.style.bottom =
-        `calc(50vh - (${darkModeIconHeight} / 2) - 5rem)`;
+      darkModeIcon.style.bottom = `calc(50vh - (${darkModeIconHeight} / 2) - 5rem)`;
 
       // add transition properties after setting default styles
       this.$nextTick(() => {
-        pageTitle.style.transitionProperty = 'color, margin-top, opacity';
+        pageTitle.style.transitionProperty = "color, margin-top, opacity";
         pageTitle.style.transitionDuration = `${this.transitionDuration}ms`;
-        tagline.style.transitionProperty = 'color';
+        tagline.style.transitionProperty = "color";
         tagline.style.transitionDuration = `${this.transitionDuration}ms`;
-        darkModeIcon.style.transitionProperty = 'right, bottom, opacity';
+        darkModeIcon.style.transitionProperty = "right, bottom, opacity";
         darkModeIcon.style.transitionDuration = `${this.transitionDuration}ms`;
       });
 
@@ -117,10 +116,14 @@ function mainComponent() {
         // delay before fade-in
         .then(() => delay(750))
         // show title
-        .then(() => { pageTitle.classList.remove('opacity-0'); })
+        .then(() => {
+          pageTitle.classList.remove("opacity-0");
+        })
         .then(() => delay(this.transitionDuration + 250))
         // fade in tagline
-        .then(() => { tagline.classList.remove('opacity-0'); }) 
+        .then(() => {
+          tagline.classList.remove("opacity-0");
+        })
         // tagline animation
         /* 
           .then(() => { this.writingEffectAdd("", "Bringing the web to you..."); })
@@ -133,44 +136,58 @@ function mainComponent() {
           .then(() => delay(1500))
           .then(() => { this.writingEffectAdd("Bringing the web", "Bringing the web to life."); })
         */
-        .then(() => { this.writingEffectAdd("", "Bringing life to the web"); })
+        .then(() => {
+          this.writingEffectAdd("", "Bringing the Web to Life");
+        })
         .then(() => delay(3500))
-        .then(() => { darkModeIcon.classList.remove('opacity-0'); })
-        .then(() => delay(1500))
-        .then(() => { this.themeToggle(); }) // toggle dark theme
-        .then(() => { this.taglineCursorHide(); }) // disable tagline cursor
+        .then(() => {
+          darkModeIcon.classList.remove("opacity-0");
+        })
         .then(() => delay(1500))
         .then(() => {
-
+          this.themeToggle();
+        }) // toggle dark theme
+        .then(() => {
+          this.taglineCursorHide();
+        }) // disable tagline cursor
+        .then(() => delay(1500))
+        .then(() => {
           // show the footer
-          document.querySelectorAll('.footer-item:not(#icon-dark-mode)')
+          document
+            .querySelectorAll(".footer-item:not(#icon-dark-mode)")
             .forEach((item) => {
-              item.style.opacity = '1';
-              item.style.bottom = '';
-            })
+              item.style.opacity = "1";
+              item.style.bottom = "";
+            });
 
           // move the dark mode toggle icon into the footer
-          darkModeIcon.style.right = '';
-          darkModeIcon.style.bottom = ''; })
-        .then(() => { pageTitle.style.marginTop = ""; })
+          darkModeIcon.style.right = "";
+          darkModeIcon.style.bottom = "";
+        })
+        .then(() => {
+          pageTitle.style.marginTop = "";
+        })
         .then(() => delay(1000))
-        .then(() => { this.categorySelect('about'); })
-        .then(() => { this.$refs.actionIconEmail.classList.add('wiggle'); })
-        .then(() => delay(1000))
-      
-      localStorage.setItem('introSeen', '1');
+        .then(() => {
+          this.categorySelect("about");
+        })
+        .then(() => {
+          this.$refs.actionIconEmail.classList.add("wiggle");
+        })
+        .then(() => delay(1000));
+
+      localStorage.setItem("introSeen", "1");
     },
 
     taglineCursorBlinkEnable() {
       this.taglineCursorBlink = setInterval(() => {
         this.taglineCursorShow = true;
-        this.$refs.taglineCursor.style.opacity = '1';
+        this.$refs.taglineCursor.style.opacity = "1";
 
         setTimeout(() => {
           // disable the cursor, creating a blink effect when repeated
-          this.taglineCursorShow = false
+          this.taglineCursorShow = false;
         }, this.taglineCursorBlinkDuration);
-
       }, this.taglineCursorBlinkDuration * 2);
     },
     taglineCursorBlinkDisable() {
@@ -183,26 +200,26 @@ function mainComponent() {
     },
 
     themeApply() {
-      let htmlEl = document.querySelector('html');
+      let htmlEl = document.querySelector("html");
       if (this.isDarkMode) {
-        htmlEl.classList.add('bg-black');
-        document.body.classList.add('uk-light');
-        document.querySelector('#page-footer').classList.add('is-dark-mode');
+        htmlEl.classList.add("bg-black");
+        document.body.classList.add("uk-light");
+        document.querySelector("#page-footer").classList.add("is-dark-mode");
       } else {
-        htmlEl.classList.remove('bg-black');
-        document.body.classList.remove('uk-light');
-        document.querySelector('#page-footer').classList.remove('is-dark-mode');
+        htmlEl.classList.remove("bg-black");
+        document.body.classList.remove("uk-light");
+        document.querySelector("#page-footer").classList.remove("is-dark-mode");
       }
     },
     themeToggle() {
       this.isDarkMode = !this.isDarkMode;
-      localStorage.setItem('isDarkMode', this.isDarkMode ? '1' : '');
+      localStorage.setItem("isDarkMode", this.isDarkMode ? "1" : "");
       this.themeApply();
     },
 
-    writingEffectAdd(startText, endText, currentPosition=undefined) {
+    writingEffectAdd(startText, endText, currentPosition = undefined) {
       this.taglineCursorBlinkDisable();
-          
+
       if (!currentPosition) {
         currentPosition = startText.length;
       }
@@ -216,7 +233,7 @@ function mainComponent() {
           } else {
             this.taglineCursorBlinkEnable();
           }
-        })
+        });
     },
 
     writingEffectDelete(startText, endText) {
@@ -233,8 +250,7 @@ function mainComponent() {
           } else {
             this.taglineCursorBlinkEnable();
           }
-        })
+        });
     },
-
   };
 }
