@@ -1,0 +1,29 @@
+---
+version: "3.8"
+
+services:
+  nicholas-moen:
+    image: arcanemachine/images:nicholas-moen
+    container_name: nicholas-moen
+    labels:
+      # enable the service
+      - "traefik.enable=true"
+
+      # expose domains
+      - "traefik.http.routers.nicholas-moen.rule=Host(`moendigitalservices.com`, `www.moendigitalservices.com`)"
+
+      # must use same name as traefik secure entrypoint
+      - "traefik.http.routers.nicholas-moen.entrypoints=websecure"
+
+      # use let's encrypt for SSL certificates
+      - "traefik.http.routers.nicholas-moen.tls.certresolver=letsencrypt"
+
+      # redirect non-www to www
+      - "traefik.http.routers.nicholas-moen.middlewares=redirect-non-www-to-www@file"
+
+    networks:
+      - "traefik-global-proxy"
+
+networks:
+  traefik-global-proxy:
+    external: true
