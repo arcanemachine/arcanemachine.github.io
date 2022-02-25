@@ -10,7 +10,7 @@ services:
       - "traefik.enable=true"
 
       # expose domains
-      - "traefik.http.routers.nicholas-moen.rule=Host(`moendigitalservices.com`, `www.moendigitalservices.com`)"
+      - "traefik.http.routers.nicholas-moen.rule=Host(`nicholasmoen.com`, `www.nicholasmoen.com`)"
 
       # must use same name as traefik secure entrypoint
       - "traefik.http.routers.nicholas-moen.entrypoints=websecure"
