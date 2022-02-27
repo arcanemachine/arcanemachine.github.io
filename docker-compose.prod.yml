@@ -2,28 +2,16 @@
 version: "3.8"
 
 services:
-  proxy-node:
-    build: .
-    container_name: ${CONTAINER_NAME}
+  backend:
     labels:
-      # enable the service
-      - "traefik.enable=true"
-
       # expose domains
       - "traefik.http.routers.${CONTAINER_NAME}.rule=Host(`${DOMAIN_NAME}`, `www.${DOMAIN_NAME}`)"
 
-      # must use same name as traefik secure entrypoint
+      # set entrypoints
       - "traefik.http.routers.${CONTAINER_NAME}.entrypoints=websecure"
 
-      # use let's encrypt for SSL certificates
+      # setup SSL certificate provider
       - "traefik.http.routers.${CONTAINER_NAME}.tls.certresolver=letsencrypt"
 
       # redirect non-www to www
       - "traefik.http.routers.${CONTAINER_NAME}.middlewares=redirect-non-www-to-www@file"
-
-    networks:
-      - "traefik-global-proxy"
-
-networks:
-  traefik-global-proxy:
-    external: true
