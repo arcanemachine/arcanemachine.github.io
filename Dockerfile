@@ -1,10 +1,9 @@
 # syntax=docker/dockerfile:1
 
 # use latest nginx image
-# FROM arcanemachine/images:nginx
 FROM nginx
 
 # copy website content to folder
-ADD ./html/ /usr/share/nginx/html
+ADD ${HTML_PATH} /usr/share/nginx/
 
-EXPOSE 8081:80
+EXPOSE ${CONTAINER_PORT_INTERNAL}:80

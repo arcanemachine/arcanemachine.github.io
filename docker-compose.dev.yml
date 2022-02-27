@@ -1,0 +1,16 @@
+---
+version: "3.8"
+
+services:
+  backend:
+    build: .
+    container_name: ${CONTAINER_NAME}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${CONTAINER_NAME}.rule=Host(`${SECOND_LEVEL_DOMAIN}.localhost`)"
+    networks:
+      - "traefik-global-proxy"
+
+networks:
+  traefik-global-proxy:
+    external: true
