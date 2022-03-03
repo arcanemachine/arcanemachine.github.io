@@ -5,13 +5,13 @@ services:
   backend:
     labels:
       # expose domains
-      - "traefik.http.routers.${CONTAINER_NAME}.rule=Host(`${DOMAIN_NAME}`, `www.${DOMAIN_NAME}`)"
+      - "traefik.http.routers.${PROJECT_NAME}.rule=Host(`${DOMAIN_NAME}`, `www.${DOMAIN_NAME}`)"
 
       # set entrypoints
-      - "traefik.http.routers.${CONTAINER_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.${PROJECT_NAME}.entrypoints=websecure"
 
       # setup SSL certificate provider
-      - "traefik.http.routers.${CONTAINER_NAME}.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.${PROJECT_NAME}.tls.certresolver=letsencrypt"
 
       # redirect non-www to www
-      - "traefik.http.routers.${CONTAINER_NAME}.middlewares=redirect-non-www-to-www@file"
+      - "traefik.http.routers.${PROJECT_NAME}.middlewares=redirect-non-www-to-www@file"
