@@ -7,7 +7,6 @@ services:
     container_name: ${PROJECT_NAME}
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${PROJECT_NAME}.rule=Host(`${DOMAIN_NAME_WITHOUT_TLD}.localhost`)"
     networks:
       - "traefik-global-proxy"
 
