@@ -5,7 +5,3 @@ services:
   backend:
     ports:
       - "${PROJECT_PORT_EXTERNAL}:80"
-
-networks:
-  traefik-global-proxy:
-    external: true
