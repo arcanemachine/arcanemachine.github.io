@@ -1,1 +1,14 @@
-docker-compose.dev-nginx.yml
+---
+version: "3.8"
+
+services:
+  backend:
+    networks:
+      - traefik-global-proxy
+    labels:
+      - "traefik.http.routers.${PROJECT_NAME}.rule=Host(`${DEV_DOMAIN_NAME}`)"
+      - "traefik.http.routers.${PROJECT_NAME}.entrypoints=web"
+
+networks:
+  traefik-global-proxy:
+    external: true
