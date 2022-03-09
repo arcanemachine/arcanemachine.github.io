@@ -3,7 +3,11 @@ version: "3.8"
 
 services:
   backend:
-    build: .
+    image: bitnami/nginx
+    volumes:
+      - ./html:/app
+    expose:
+      - "8080"
     container_name: ${PROJECT_NAME}
     labels:
       - "traefik.enable=true"
