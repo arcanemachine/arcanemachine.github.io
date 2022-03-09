@@ -1,0 +1,7 @@
+---
+version: "3.8"
+
+services:
+  backend:
+    ports:
+      - "${PROJECT_PORT_EXTERNAL}:8080"
