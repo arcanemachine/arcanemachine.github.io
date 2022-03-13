@@ -6,7 +6,7 @@ if systemctl --user list-units --all | grep -Fq podman.service | grep -Fq inacti
 fi
 
 # start the container
-# docker-compose -H unix:/run/user/$(id -u)/podman/podman.sock -f podman-compose.yml -f docker-compose.dev.yml down
-# docker-compose -H unix:/run/user/$(id -u)/podman/podman.sock -f podman-compose.yml -f docker-compose.dev.yml up --remove-orphans
-podman-compose -f podman-compose.yml -f docker-compose.dev.yml down
-podman-compose -f podman-compose.yml -f docker-compose.dev.yml up $1
+# docker-compose -H unix:/run/user/$(id -u)/podman/podman.sock -f docker-compose.yml -f docker-compose.dev.yml down
+# docker-compose -H unix:/run/user/$(id -u)/podman/podman.sock -f docker-compose.yml -f docker-compose.dev.yml up --remove-orphans
+podman-compose -f docker-compose.yml -f docker-compose.dev.yml down
+podman-compose -f docker-compose.yml -f docker-compose.dev.yml up $1
