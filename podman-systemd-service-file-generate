@@ -47,19 +47,18 @@ RequiresMountsFor=/run/user/$(id -u)/containers
 
 [Service]
 # Environment=PODMAN_SYSTEMD_UNIT=%n
-Environment=RUNTIME_DIR=$XDG_RUNTIME_DIR
 Restart=on-failure
 WorkingDirectory=$(pwd)
 # Type=forking
 
 # Shutdown container (if running) when unit is started
-ExecStartPre=$HOME/.local/bin/podman-compose -f docker-compose.yml -f docker-compose.$SERVER_ENVIRONMENT.yml down
+ExecStartPre=$(which docker-compose) -H unix:$XDG_RUNTIME_DIR/podman/podman.sock -f podman-compose.yml -f docker-compose.$SERVER_ENVIRONMENT.yml down
 
 # Start container when unit is started
-ExecStart=$HOME/.local/bin/podman-compose -f docker-compose.yml -f docker-compose.$SERVER_ENVIRONMENT.yml up --remove-orphans
+ExecStart=$(which docker-compose) -H unix:$XDG_RUNTIME_DIR/podman/podman.sock -f podman-compose.yml -f docker-compose.$SERVER_ENVIRONMENT.yml up --remove-orphans
 
 # Stop all services
-ExecStop=$HOME/.local/bin/podman-compose -f docker-compose.yml -f docker-compose.$SERVER_ENVIRONMENT.yml down
+ExecStop=$(which docker-compose) -H unix:$XDG_RUNTIME_DIR/podman/podman.sock -f podman-compose.yml -f docker-compose.$SERVER_ENVIRONMENT.yml down
 
 [Install]
 WantedBy=default.target"
