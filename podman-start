@@ -10,5 +10,14 @@ if ! podman network ls | grep -Fq traefik-global-proxy; then
   podman network create traefik-global-proxy
 fi
 
+if [ "$1" != "." ]; then
+  SERVER_ENVIRONMENT="$1"
+fi
+
+if [ "$SERVER_ENVIRONMENT" == "" ]; then
+  echo "SERVER_ENVIRONMENT not set. Aborting..."
+  exit 1
+fi
+
 # start the container
-docker-compose -H unix:$XDG_RUNTIME_DIR/podman/podman.sock -f docker-compose.yml -f docker-compose.dev.yml up --remove-orphans
+docker-compose -H unix:$XDG_RUNTIME_DIR/podman/podman.sock -f docker-compose.yml -f docker-compose.$SERVER_ENVIRONMENT.yml up --remove-orphans
