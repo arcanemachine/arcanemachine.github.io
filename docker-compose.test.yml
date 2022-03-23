@@ -2,15 +2,12 @@
 version: "3.8"
 
 services:
-  backend:
+  nginx:
     networks:
       - traefik-global-proxy
     labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.${PROJECT_NAME}.rule=Host(`${PROJECT_NAME}.${TEST_DOMAIN_NAME}`, `www.${PROJECT_NAME}.${TEST_DOMAIN_NAME}`)"
       - "traefik.http.routers.${PROJECT_NAME}.middlewares=redirect-non-www-to-www@file"
       - "traefik.http.routers.${PROJECT_NAME}.entrypoints=websecure"
       - "traefik.http.routers.${PROJECT_NAME}.tls.certresolver=letsencrypt"
-
-networks:
-  traefik-global-proxy:
-    external: true

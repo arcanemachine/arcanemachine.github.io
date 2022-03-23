@@ -2,6 +2,8 @@
 version: "3.8"
 
 services:
-  backend:
+  nginx:
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d:ro
     ports:
-      - "${PROJECT_PORT_EXTERNAL}:8080"
+      - "${PROJECT_PORT_EXTERNAL}:80"

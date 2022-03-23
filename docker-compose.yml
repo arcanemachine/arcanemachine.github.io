@@ -2,12 +2,13 @@
 version: "3.8"
 
 services:
-  backend:
-    image: docker.io/bitnami/nginx
+  nginx:
+    image: docker.io/nginx
     container_name: ${PROJECT_NAME}
     volumes:
-      - ./html:/app
-    expose:
-      - "8080"
-    labels:
-      - "traefik.enable=true"
+      - ./nginx/:/etc/nginx/conf.d:ro
+      - ./html/:/var/www/html:ro
+
+networks:
+  traefik-global-proxy:
+    external: true
