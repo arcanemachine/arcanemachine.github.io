@@ -6,7 +6,7 @@ services:
     image: docker.io/nginx
     container_name: ${PROJECT_NAME}
     volumes:
-      - ./nginx/:/etc/nginx/conf.d:ro
+      - ./nginx:/etc/nginx/conf.d:ro
       - ${HTML_PATH}:/var/www/html:ro
 
 networks:
