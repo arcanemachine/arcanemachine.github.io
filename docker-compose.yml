@@ -7,7 +7,7 @@ services:
     container_name: ${PROJECT_NAME}
     volumes:
       - ./nginx/:/etc/nginx/conf.d:ro
-      - ./html/:/var/www/html:ro
+      - ${HTML_PATH}:/var/www/html:ro
 
 networks:
   traefik-global-proxy:
