@@ -3,7 +3,5 @@ version: "3.8"
 
 services:
   nginx:
-    volumes:
-      - ./nginx/:/etc/nginx/conf.d:ro
     ports:
       - "${PROJECT_PORT_EXTERNAL}:80"
