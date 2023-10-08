@@ -152,12 +152,12 @@
         <div x-show="categoryCurrent === 'skillsets'"
              x-transition.opacity.duration.400ms>
           <div class="text-center">
-            <p>Pretty good with: Python, Javascript, Bash, Linux</p>
-            <p>Backend: Django/Django Rest Framework, HTMX</p>
+            <p>Pretty good with: Python, Javascript, Elixir, Bash, Linux</p>
+            <p>Backend: Django/Django Rest Framework, HTMX, Phoenix + LiveView</p>
             <p>Frontend: Vanilla JS, React, Vue, Svelte, Alpine.JS</p>
-            <p>CSS: Good with Vanilla CSS and Bootstrap. Experience with Bulma and UIKit.</p>
-            <p>Unit/Integration testing: Jest, Django TestCase, Jasmine</p>
-            <p>E2E testing: Experience with Cypress and Testcafe</p>
+            <p>CSS: Good with Vanilla CSS, Bootstrap, Tailwind (esp. DaisyUI), and Bulma.</p>
+            <p>Unit/Integration testing: Django TestCase, ExUnit, Vitest, Jest, Jasmine</p>
+            <p>E2E testing: Experience with Playwright, Cypress, and Testcafe</p>
           </div>
         </div>
 
@@ -175,12 +175,21 @@
                     Made using Django.
                   </span>
                 </li>
-                <li>
+                <!--li>
                   <a href="https://bluecollarsafety.com">Blue Collar Safety</a>:
                   <span>
                     This service makes it easy for a company to manage an
                     employee's required safety certificates (TDG, WHMIS, etc).
                     Made with Django and Bootstrap 4.
+                  </span>
+                </li-->
+                <li>
+                  <a href="https://www.jsonsaver.com/">jsonSaver</a>:
+                  <span>
+                    Make, manage, and share JSON snippets using our web client or REST API.
+                    Made using Django and Django Rest Framework.
+                    Tested on the backend with Django's test suite, and E2E tested with Testcafe.
+                    (<a href="https://github.com/arcanemachine/django-jsonsaver/">View on GitHub</a>)
                   </span>
                 </li>
                 <li>
@@ -191,15 +200,6 @@
                   </span>
                 </li>
                 <li>
-                  <a href="https://www.jsonsaver.com/">jsonSaver</a>:
-                  <span>
-                    Create, retrieve, update, and destroy JSON snippets using our web client or REST API.
-                    Made using Django and Django Rest Framework.
-                    Tested on the backend with Django's test suite, and E2E tested with Testcafe.
-                    (<a href="https://github.com/arcanemachine/django-jsonsaver/">View on GitHub</a>)
-                  </span>
-                </li>
-                <li>
                   <a href="https://django-menu-maker.nicholasmoen.com/">Menu Maker</a>:
                   <span>
                     Create a menu for your restaurant using our web client, and
@@ -207,6 +207,28 @@
                     Made with Django and Django Rest Framework.
                     Tested on the backend with Django's built-in test suite.
                     (<a href="https://github.com/arcanemachine/django-menu-maker/">View on GitHub</a>)
+                  </span>
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h3>Phoenix + LiveView</h3>
+              <ul>
+                <li>
+                  <a href="https://phoenix-quiz-game.nicholasmoen.com">Phoenix Quiz Game</a>:
+                  <span>
+                    Make quizzes, take quizzes, practice your math skills, and manage quiz sessions.
+                    Uses LiveView and Presence to bring realtime functionality.
+                    Tested on the backend with ExUnit.
+                  </span>
+                </li>
+                <li>
+                  <a href="https://phoenix-todo-list.nicholasmoen.com/">Phoenix Todo List</a>:
+                  <span>
+                    Yet another todo list, with SPA-like functionality implemented via LiveView.
+                    Also implements basic user authentication and management.
+                    Tested on the backend with ExUnit and E2E tested with Playwright.
                   </span>
                 </li>
               </ul>
@@ -253,7 +275,10 @@
                 <li>
                   <a href="https://django-htmx-alpine.nicholasmoen.com/">Alpine.JS + HTMX - Todo List Demo</a>:
                   <span>
-                    This project is essentially just a basic todo list. However, the combination of Alpine.JS and HTMX shows how you can get the reactivity of a frontend JS framework without sacrificing the benefits of your server-side framework (Session authentication, templating, etc).
+                    This project is essentially just a basic todo list.
+                    However, the combination of Alpine.JS and HTMX shows how you can get the
+                    reactivity of a frontend JS framework without sacrificing the benefits of
+                    your server-side framework (session authentication, templating, etc).
                     (<a href="https://github.com/arcanemachine/django-htmx-alpine/">View on GitHub</a>)
                   </span>
                   <ul class="mt-2">
