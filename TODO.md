@@ -1,2 +1,1 @@
-- make it pretty
 - add screenshots of projects
